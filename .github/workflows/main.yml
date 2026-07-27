@@ -25,15 +25,15 @@ jobs:
       - name: Create google-services.json
         env:
           GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES_JSON }}
-        run: echo "$GOOGLE_SERVICES" > app/google-services.json
-
-      - name: Generate gradlew
         run: |
-          gradle wrapper --gradle-version 8.1.1
-          chmod +x gradlew
+          mkdir -p app
+          echo "$GOOGLE_SERVICES" > app/google-services.json
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
