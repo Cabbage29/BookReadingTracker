@@ -27,8 +27,10 @@ jobs:
           GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES_JSON }}
         run: echo "$GOOGLE_SERVICES" > app/google-services.json
 
-      - name: Make gradlew executable
-        run: chmod +x gradlew
+      - name: Generate gradlew
+        run: |
+          gradle wrapper --gradle-version 8.1.1
+          chmod +x gradlew
 
       - name: Build Debug APK
         run: ./gradlew assembleDebug
