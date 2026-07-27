@@ -4,21 +4,18 @@ plugins {
 }
 
 android {
-    compileSdk 34
+    compileSdk 33
     namespace 'com.example.bookreader'
 
     defaultConfig {
         applicationId "com.example.bookreader"
         minSdk 23
-        targetSdk 34
+        targetSdk 33
         versionCode 1
         versionName "1.0"
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
-        }
         debug {
             minifyEnabled false
         }
@@ -28,6 +25,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+}
+
+repositories {
+    google()
+    mavenCentral()
 }
 
 dependencies {
